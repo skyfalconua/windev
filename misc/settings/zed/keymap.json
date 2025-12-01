@@ -1,0 +1,16 @@
+[
+  {
+    "bindings": {
+      "ctrl-t": "workspace::NewCenterTerminal",
+      "ctrl-n": "workspace::NewFile",
+      "ctrl-q": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-d": "editor::DuplicateLineDown",
+      "ctrl-r": "search::ToggleReplace"
+    }
+  }
+]

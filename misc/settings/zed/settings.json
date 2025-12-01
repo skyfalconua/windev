@@ -1,0 +1,102 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "theme": "JetBrains New Dark",
+  "icon_theme": "Material Icon Theme",
+  "base_keymap": "SublimeText",
+
+  "buffer_font_size": 16,
+  "buffer_font_family": "Cascadia Code NF",
+  "buffer_line_height": { "custom": 1.3 },
+  "tab_size": 2,
+  "preferred_line_length": 80,
+  "soft_wrap": "none",
+  "current_line_highlight": "all",
+  "show_whitespaces": "selection",
+  "on_last_window_closed": "quit_app",
+
+  "autosave": "off",
+  "format_on_save": "off",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+
+  "tabs": {
+    "file_icons": true
+  },
+  "project_panel": {
+    "indent_size": 12
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "fixed",
+    "background_coloring": "indent_aware"
+  },
+
+  // disable panels and buttons
+  "show_call_status_icon": false,
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": "never"
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "features": {
+    "edit_prediction_provider": "none",
+    "copilot": false
+  },
+  "agent": {
+    "button": false,
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "terminal": {
+    "button": false,
+    "detect_venv": "off",
+    "toolbar": {
+      "title": false,
+      "breadcrumbs": false
+    }
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // extensions
+  "auto_install_extensions": {
+    "fish": true,
+    "git-firefly": true,
+    "html": true,
+    "intellij-newui-theme": true,
+    "just": true,
+    "lua": true,
+    "make": true,
+    "material-icon-theme": true,
+    "new-darcula": true,
+    "nginx": true,
+    "nu": true,
+    "tmux": true,
+    "toml": true,
+    "zig": true
+  }
+}

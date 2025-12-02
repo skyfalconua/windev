@@ -38,3 +38,10 @@ Color scheme: CGA
 Font face: Cascadia Code NF
 Font size: 14
 ```
+
+### misc
+
+```
+git config core.eol lf
+git config --global core.eol lf
+```

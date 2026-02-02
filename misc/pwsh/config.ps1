@@ -1,4 +1,9 @@
 #
+# edit config
+#   notepad C:\opt\.windev\misc\pwsh\config.ps1
+#
+
+#
 # to install oh-my-posh run
 #   winget install JanDeDobbeleer.OhMyPosh
 #
@@ -13,6 +18,9 @@ function Prepend-Path($path) {
   Remove-Path $path
   $env:Path = "$path;$env:Path"
 }
+
+# rundll32.exe sysdm.cpl,EditEnvironmentVariables
+
 # function Remove-Path-Permanent($path) {
 #   $current = [Environment]::GetEnvironmentVariable("Path", "User")
 #   $newPath = ($current -split ';' | Where-Object { $_ -ne $path }) -join ';'
@@ -23,5 +31,10 @@ function Prepend-Path($path) {
 #   $current = [Environment]::GetEnvironmentVariable("Path", "User")
 #   [Environment]::SetEnvironmentVariable("Path", "$path;$current".TrimEnd(';'), "User")
 # }
+# Prepend-Path-Permanent "C:\opt\msys64\usr\bin"
+# Prepend-Path-Permanent "C:\opt\msys64\ucrt64\bin"
+# Prepend-Path-Permanent "C:\opt\Apps\VSCode\bin"
+# Prepend-Path-Permanent (Join-Path $env:LOCALAPPDATA "Programs\Zed\bin")
+# Prepend-Path-Permanent "C:\opt\Bins"
 
-Prepend-Path "C:\opt\.windev\pbin"
+# $h = (Get-PSReadlineOption).HistorySavePath ; Remove-Item $h -Force

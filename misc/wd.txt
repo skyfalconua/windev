@@ -1,0 +1,23 @@
+ cd C:\opt
+.\Apps\webdav\webdav.exe -c .capopt\misc\webdav.yaml
+
+-- --
+
+address: 0.0.0.0
+port: 8095
+
+# The directory that will be able to be accessed by the users when connecting.
+# This directory will be used by users unless they have their own 'directory' defined.
+# Default is '.' (current directory).
+directory: Shared
+
+# The default permissions for users. This is a case insensitive option. Possible
+# permissions: C (Create), R (Read), U (Update), D (Delete). You can combine multiple
+# permissions. For example, to allow to read and create, set "RC". Default is "R".
+permissions: CRUD
+
+noPassword: false
+users:
+  # Example 'admin' user with plaintext password.
+  - username: andrew
+    password: "{bcrypt}..."

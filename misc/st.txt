@@ -1,0 +1,21 @@
+$code = @'
+using System;
+using System.Runtime.InteropServices;
+
+public static class PowerUtil {
+  [DllImport("kernel32.dll", SetLastError = true)]
+  public static extern uint SetThreadExecutionState(uint esFlags);
+}
+'@
+
+Add-Type -TypeDefinition $code -ErrorAction Stop
+
+function stes {
+  $ES_CONTINUOUS       = [uint32]"0x80000000"
+  $ES_DISPLAY_REQUIRED = [uint32]"0x00000002"
+
+  [PowerUtil]::SetThreadExecutionState($ES_CONTINUOUS -bor $ES_DISPLAY_REQUIRED) | Out-Null
+
+  Write-Host "Press Ctrl+C to stop."
+  while ($true) { Start-Sleep -Seconds 60 }
+}

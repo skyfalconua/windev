@@ -1,9 +1,6 @@
 ### powershell
 
 ```powershell
-winget install --id Git.Git -e --source winget
-winget install JanDeDobbeleer.OhMyPosh
-
 New-Item -ItemType Directory -Path (Split-Path -Parent $PROFILE) -Force
 New-Item -ItemType File -Path $PROFILE -Force
 
@@ -14,8 +11,6 @@ notepad $PROFILE
 ### zsh
 
 ```sh
-#-- run bash
-
 pacman -S zsh git
 notepad C:\opt\msys64\msys2_shell.cmd
 #> "LOGINSHELL=zsh"
@@ -32,11 +27,6 @@ pac install \
   mingw-w64-ucrt-x86_64-gitui \
   mingw-w64-ucrt-x86_64-yazi \
   mingw-w64-ucrt-x86_64-zoxide
-
-# notepad $HOME/.zshrc
-#> source /c/opt/.windev/misc/msys/config.sh
-
-# pmsys
 ```
 
 ### windows terminal

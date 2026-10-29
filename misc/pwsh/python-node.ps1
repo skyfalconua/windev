@@ -8,10 +8,14 @@ Add-Path-Permanent-end "$env:LOCALAPPDATA\vite-plus\data\fallback-bin"
 
 # -- --
 
-uv python install 3.12
-
 # example to install github
+uv python install 3.14
 uv tool install specify-cli
+
+uv python install 3.13
+uv tool install poetry
+
+# -- --
 
 function uvpv($version) {
   if (-not $version) {
@@ -23,7 +27,7 @@ function uvpv($version) {
   if (-not $python) { return }
 
   # remove old uv-managed python entries from user PATH
-  $root = (uv python dir).Trim()
+  $root = (uv python --managed-python dir).Trim()
   $user = [Environment]::GetEnvironmentVariable("Path", "User")
   foreach ($p in $user -split ';') {
     if ($p -and $p.StartsWith($root, 'OrdinalIgnoreCase')) { Remove-Path-Permanent $p }

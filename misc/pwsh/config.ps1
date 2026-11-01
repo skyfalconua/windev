@@ -17,6 +17,27 @@ if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
   oh-my-posh --init --shell pwsh --config 'spaceship' | Invoke-Expression
 }
 
+# -- dotenv import function -- --
+
+function Import-DotEnv($path = '.env') {
+    if (!(Test-Path -Lit $path -PathType Leaf)) { throw "File not found: $path" }
+
+    foreach ($line in Get-Content -Lit $path) {
+        if ($line -notmatch '^\s*(?:export\s+)?([A-Za-z_]\w*)\s*=\s*(.*?)\s*$') { continue }
+        $name, $value = $Matches[1], $Matches[2]
+
+        # Quoted value: strip quotes (and any trailing comment). Unquoted: strip " # comment".
+        if ($value -match '^"(.*)"(?:\s+#.*)?$' -or $value -match "^'(.*)'(?:\s+#.*)?$") {
+          $value = $Matches[1]
+        }
+        else { $value = $value -replace '\s+#.*$' }
+
+        Set-Item "Env:$name" $value
+    }
+}
+
+Set-Alias source Import-DotEnv
+
 # -- path management functions -- -- --
 
 function Remove-Path($path) {

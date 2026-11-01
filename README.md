@@ -21,10 +21,11 @@ notepad C:\opt\msys64\msys2_shell.cmd
 
 pac install \
   mc p7zip unrar tree cygutils \
-  mingw-w64-ucrt-x86_64-tk \
   mingw-w64-ucrt-x86_64-fzf \
   mingw-w64-ucrt-x86_64-fd \
   mingw-w64-ucrt-x86_64-sd \
+  mingw-w64-ucrt-x86_64-jq \
+  mingw-w64-ucrt-x86_64-tk \
   mingw-w64-ucrt-x86_64-bat \
   mingw-w64-ucrt-x86_64-ripgrep \
   mingw-w64-ucrt-x86_64-micro \

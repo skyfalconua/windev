@@ -35,7 +35,6 @@ function pgstart() {
 #   pgrun mydb                 # database is positional
 #   pgrun mydb -c "select 1"   # run a command
 #   pgrun mydb -f init.sql     # run a file
-#   pgrun mydb -u appuser      # different user
 #
 function pgrun($d = "postgres", $c, $f) {
     $a = @("-h", "localhost", "-p", "$PgPort", "-U", $PgSuperUser, "-d", $d)

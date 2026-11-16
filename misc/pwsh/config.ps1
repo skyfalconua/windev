@@ -72,3 +72,48 @@ function Add-Path-Permanent-end($path) {
 # Add-Path-Permanent-start (Join-Path $env:LOCALAPPDATA "Programs\Zed\bin")
 # Add-Path-Permanent-start (Join-Path $HOME ".local\bin")
 # Add-Path-Permanent-start "C:\opt\bin"
+
+# -- -- Windows Terminal launch function -- --
+
+function wttb {
+  $ui  = "C:\opt\Projects\app_ui"
+  $api = "C:\opt\Projects\app_api"
+
+  # profile + title + suppress flag + directory
+  function opts($title, $dir, $prof = 'Windows PowerShell') {
+    "-p `"$prof`" --title $title --suppressApplicationTitle -d `"$dir`""
+  }
+
+  $misc    = opts Misc    $PWD.Path
+  $apiOpts = opts app_api $api
+  $uiOpts  = opts app_ui  $ui
+  $zshUi   = opts zsh     $ui   zsh
+  $zshApi  = opts zsh     $api  zsh
+
+  $Host.UI.RawUI.WindowTitle = 'Misc'
+
+  $wtArgs = @(
+    # Tab 1: scratch, two panes stacked (-w 0 = current window)
+    "-w 0 split-pane -H $misc -s 0.2"
+
+    # Tab 2: API, small pane below
+    "new-tab $apiOpts"
+    "split-pane -H $apiOpts -s 0.2"
+    "split-pane -V $apiOpts -s 0.5"
+
+    # Tab 3: UI, top pane + bottom pane split into left/right
+    "new-tab $uiOpts"
+    "split-pane -H $uiOpts -s 0.2"
+
+    # Tab 4: zsh API
+    "new-tab $zshApi"
+
+    # Tab 5: zsh UI
+    "new-tab $zshUi"
+
+    # Back to the Misc tab, cursor in its top pane
+    "focus-tab -t 0"
+  ) -join ' ; '
+
+  Start-Process wt -ArgumentList $wtArgs
+}

@@ -1,5 +1,5 @@
 # -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
-#  Scripts to manage Codex sessions on disk.
+#  Scripts to manage Codex sessions
 # -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
 
 $CodexSessionsDir = "$HOME/.codex/sessions"

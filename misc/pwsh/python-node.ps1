@@ -15,7 +15,9 @@ uv tool install specify-cli
 uv python install 3.13
 uv tool install poetry
 
-# -- --
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
+# Python version management
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
 
 function uvpv($version) {
   if (-not $version) {

@@ -1,3 +1,7 @@
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
+# PostgreSQL helpers
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - -
+
 $PgRoot      = "C:\opt\Apps\pgsql"
 $PgPort      = 5432
 $PgSuperUser = "postgres"
@@ -14,7 +18,7 @@ $PgData = Join-Path $PgRoot "_data"   # database cluster
 #
 # ----------------------------------------------------------------------------
 
-function _pginvoke($exe, $a = @()) {
+function pginvoke($exe, $a = @()) {
     $path = Join-Path $PgBin "$exe.exe"
     if (-not (Test-Path $path)) { throw "Not found: $path. Check `$PgRoot and the setup notes." }
     if ($PgPassword) { $env:PGPASSWORD = $PgPassword }
@@ -27,7 +31,7 @@ function pgstart() {
     if (-not (Test-Path (Join-Path $PgData "PG_VERSION"))) {
         throw "Data directory not initialized: $PgData (see setup notes at the top of this file)"
     }
-    _pginvoke "postgres" @("-D", $PgData, "-p", "$PgPort")
+    pginvoke "postgres" @("-D", $PgData, "-p", "$PgPort")
 }
 
 # Open psql, or run a command / file. Params mirror psql flags:
@@ -40,5 +44,5 @@ function pgrun($d = "postgres", $c, $f) {
     $a = @("-h", "localhost", "-p", "$PgPort", "-U", $PgSuperUser, "-d", $d)
     if ($c) { $a += @("-c", $c) }
     if ($f) { $a += @("-f", $f) }
-    _pginvoke psql $a
+    pginvoke psql $a
 }
